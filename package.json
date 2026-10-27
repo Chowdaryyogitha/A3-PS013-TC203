@@ -1,0 +1,12 @@
+{
+  "name": "ps013-incident-timeline",
+  "version": "1.0.0",
+  "description": "Incident timeline and evidence collection for small IT teams (AIORI PS-013)",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test src/tests/parser.test.js"
+  },
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Incident Timeline &amp; Evidence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2322d3ee' d='M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5z'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" class="logo" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5z"/><path class="logo-line" d="M8 12h2l1.5-3 2 6 1.5-3h1"/></svg>
+      <div>
+        <h1>Incident Timeline</h1>
+        <p>Evidence collection for small IT teams</p>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="btn-demo" class="btn btn-primary"><span class="ico">▶</span> Load Demo Data</button>
+      <button id="btn-import" class="btn"><span class="ico">⤒</span> Import Logs</button>
+      <button id="btn-clear" class="btn btn-ghost" disabled>Clear</button>
+    </div>
+  </header>
+
+  <div id="demo-banner" class="banner hidden" role="status">
+    <strong>SAMPLE DATA</strong> — simulated <code>auth.log</code> events for demonstration. Hosts and IPs are fictional; nothing shown is a real security detection.
+  </div>
+  <div id="error-banner" class="banner banner-error hidden" role="alert"></div>
+
+  <main>
+    <section class="stats" aria-label="Incident statistics">
+      <div class="stat"><span class="stat-label">Total Events</span><span class="stat-value" id="stat-total">0</span><span class="stat-sub" id="stat-range">No data loaded</span></div>
+      <div class="stat stat-critical"><span class="stat-label">Critical Alerts</span><span class="stat-value" id="stat-critical">0</span><span class="stat-sub" id="stat-high">0 high severity</span></div>
+      <div class="stat stat-warn"><span class="stat-label">Failed Logins</span><span class="stat-value" id="stat-failed">0</span><span class="stat-sub" id="stat-ips">0 source IPs</span></div>
+      <div class="stat stat-evidence"><span class="stat-label">Evidence Collected</span><span class="stat-value" id="stat-evidence">0</span><span class="stat-sub">items in case file</span></div>
+    </section>
+
+    <div class="layout">
+      <section class="panel timeline-panel" aria-label="Incident timeline">
+        <div class="panel-head">
+          <h2>Timeline</h2>
+          <span class="muted" id="result-count"></span>
+        </div>
+
+        <div class="filters">
+          <input id="f-search" type="search" placeholder="Search user, IP, command, description…" aria-label="Keyword search">
+          <div class="sev-filters" id="f-sev" role="group" aria-label="Severity filter"></div>
+          <div class="filter-row">
+            <label>From <input id="f-from" type="datetime-local" step="1"></label>
+            <label>To <input id="f-to" type="datetime-local" step="1"></label>
+            <label>Order
+              <select id="f-order">
+                <option value="asc">Oldest first</option>
+                <option value="desc">Newest first</option>
+                <option value="sev">Severity</option>
+              </select>
+            </label>
+            <button id="btn-reset" class="btn btn-sm btn-ghost">Reset</button>
+          </div>
+          <div class="bulk">
+            <label class="check"><input type="checkbox" id="sel-all"> Select visible</label>
+            <button id="btn-add-evidence" class="btn btn-sm btn-primary" disabled>+ Add to Evidence</button>
+            <span class="spacer"></span>
+            <button id="btn-export-tl-json" class="btn btn-sm" disabled>Timeline JSON</button>
+            <button id="btn-export-tl-csv" class="btn btn-sm" disabled>Timeline CSV</button>
+          </div>
+        </div>
+
+        <div id="timeline" class="timeline"></div>
+      </section>
+
+      <aside class="side">
+        <section class="panel">
+          <div class="panel-head"><h2>Severity</h2></div>
+          <div id="sev-chart" class="sev-chart"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><h2>Top Source IPs</h2></div>
+          <ul id="top-ips" class="kv-list"></ul>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><h2>Recent High-Severity Activity</h2></div>
+          <ul id="recent" class="recent"></ul>
+        </section>
+        <section class="panel evidence-panel" aria-label="Evidence collection">
+          <div class="panel-head">
+            <h2>Evidence</h2>
+            <span class="pill" id="evidence-count">0</span>
+          </div>
+          <input id="case-name" class="case-input" type="text" maxlength="80" placeholder="Case name, e.g. INC-2026-014" aria-label="Case name">
+          <ul id="evidence" class="evidence-list"></ul>
+          <div class="evidence-actions">
+            <button id="btn-export-ev-json" class="btn btn-sm" disabled>Export JSON</button>
+            <button id="btn-export-ev-csv" class="btn btn-sm" disabled>Export CSV</button>
+            <button id="btn-clear-ev" class="btn btn-sm btn-ghost" disabled>Clear</button>
+          </div>
+        </section>
+        <section id="errors-panel" class="panel hidden">
+          <div class="panel-head"><h2>Skipped Lines</h2><span class="pill pill-warn" id="error-count">0</span></div>
+          <ul id="errors" class="errors"></ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <dialog id="import-dialog">
+    <form method="dialog" class="dialog-body" id="import-form">
+      <h2>Import Logs</h2>
+      <p class="muted">Linux <code>auth.log</code> / <code>secure</code> format (classic syslog or ISO-8601 timestamps). Files are parsed locally in your browser — nothing is uploaded.</p>
+      <label class="drop" id="drop">
+        <input type="file" id="file-input" accept=".log,.txt,text/plain" multiple>
+        <span>Drop log files here or <u>browse</u></span>
+        <small id="file-names" class="muted">Max 5 MB per file</small>
+      </label>
+      <label class="block">Or paste log lines
+        <textarea id="paste-input" rows="6" placeholder="Oct 27 09:14:04 host sshd[1301]: Failed password for root from 203.0.113.45 port 52211 ssh2"></textarea>
+      </label>
+      <div class="filter-row">
+        <label>Year for syslog timestamps <input id="year-input" type="number" min="1990" max="2100"></label>
+        <label class="check"><input type="checkbox" id="append-input"> Append to current timeline</label>
+      </div>
+      <p class="muted small">Syslog timestamps carry no year or timezone; they are interpreted as UTC in the year above.</p>
+      <p id="import-error" class="form-error hidden"></p>
+      <div class="dialog-actions">
+        <button value="cancel" class="btn btn-ghost" formnovalidate>Cancel</button>
+        <button id="btn-do-import" value="ok" class="btn btn-primary">Parse &amp; Load</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/parser.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

