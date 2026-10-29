@@ -1,0 +1,27 @@
+# =====================================================================================
+# SYNTHETIC TEST DATA - baseline / normal activity (2026-10-27)
+# Generated for PS-013 Incident Timeline demos. NOT real security events.
+# Hosts (lab-*) are fictional; IPs are RFC 5737 documentation ranges
+# (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24). Syslog timestamps: import with year 2026.
+# =====================================================================================
+Oct 27 08:00:41 lab-web01 sshd[1810]: Accepted publickey for deploy from 192.0.2.10 port 50110 ssh2: ED25519 SHA256:SYNTHETICkey01
+Oct 27 08:00:41 lab-web01 sshd[1810]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Oct 27 08:02:15 lab-web01 sudo:   deploy : TTY=pts/0 ; PWD=/srv/shop ; USER=root ; COMMAND=/usr/bin/apt update
+Oct 27 08:02:15 lab-web01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by deploy(uid=1001)
+Oct 27 08:02:40 lab-web01 sudo: pam_unix(sudo:session): session closed for user root
+Oct 27 08:05:03 lab-web01 sudo:   deploy : TTY=pts/0 ; PWD=/srv/shop ; USER=root ; COMMAND=/usr/bin/systemctl reload nginx
+Oct 27 08:17:01 lab-web01 CRON[1844]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Oct 27 08:17:01 lab-web01 CRON[1844]: pam_unix(cron:session): session closed for user root
+Oct 27 08:31:22 lab-web01 sshd[1810]: Disconnected from user deploy 192.0.2.10 port 50110
+Oct 27 08:31:22 lab-web01 sshd[1810]: pam_unix(sshd:session): session closed for user deploy
+Oct 27 09:12:05 lab-web01 sshd[1902]: Accepted publickey for alice from 192.0.2.11 port 50244 ssh2: ED25519 SHA256:SYNTHETICkey02
+Oct 27 09:12:05 lab-web01 sshd[1902]: pam_unix(sshd:session): session opened for user alice(uid=1002) by (uid=0)
+Oct 27 09:14:30 lab-web01 sudo:    alice : TTY=pts/1 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx --since today
+Oct 27 09:40:10 lab-web01 sshd[1902]: Received disconnect from 192.0.2.11 port 50244:11: disconnected by user
+Oct 27 09:40:10 lab-web01 sshd[1902]: pam_unix(sshd:session): session closed for user alice
+Oct 27 12:17:01 lab-web01 CRON[2010]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Oct 27 12:17:01 lab-web01 CRON[2010]: pam_unix(cron:session): session closed for user root
+Oct 27 17:45:12 lab-web01 sshd[2133]: Accepted password for alice from 192.0.2.11 port 50890 ssh2
+Oct 27 17:45:12 lab-web01 sshd[2133]: pam_unix(sshd:session): session opened for user alice(uid=1002) by (uid=0)
+Oct 27 17:52:44 lab-web01 passwd[2150]: pam_unix(passwd:chauthtok): password changed for alice
+Oct 27 17:55:01 lab-web01 sshd[2133]: Disconnected from user alice 192.0.2.11 port 50890

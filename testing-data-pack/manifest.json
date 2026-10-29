@@ -1,0 +1,101 @@
+{
+  "name": "PS-013 testing data pack",
+  "version": "1.0.0",
+  "synthetic": true,
+  "createdUtc": "2026-10-29T16:37:08.283Z",
+  "notice": "SYNTHETIC test data. Fictional hosts; RFC 5737 documentation IP addresses only. Not real security events.",
+  "importSettings": {
+    "yearForSyslogTimestamps": 2026,
+    "timezone": "UTC"
+  },
+  "files": [
+    {
+      "name": "auth.log",
+      "format": "syslog (RFC 3164)",
+      "description": "Failed, invalid-user and successful SSH logins incl. brute force and compromised webadmin login",
+      "importableInApp": true,
+      "bytes": 2789,
+      "sha256": "c6c3db8980eb6a650423bee06afe6c33be465584fc2df2d9d756aefbb7374d8c"
+    },
+    {
+      "name": "syslog.log",
+      "format": "syslog (RFC 3339 / ISO-8601)",
+      "description": "UFW firewall blocks/egress, systemd, cron, auditd and fail2ban events; one +05:30 offset line",
+      "importableInApp": true,
+      "bytes": 2771,
+      "sha256": "c5ae3d40be05d7aaa466d2208a12f1ee74c93fff4902bcbac0bbbb67aefffb9e"
+    },
+    {
+      "name": "sample-access.log",
+      "format": "nginx access log via syslog",
+      "description": "Normal web traffic plus suspicious URL probing, SQLi, path traversal and login spraying",
+      "importableInApp": true,
+      "bytes": 3871,
+      "sha256": "b8d416bbf48413e4f01e3df24dc33154a1e3dac2d493abe8540391e457785a15"
+    },
+    {
+      "name": "sample-security-events.json",
+      "format": "JSON (app timeline-export schema)",
+      "description": "Structured, normalised events for the full incident scenario",
+      "importableInApp": false,
+      "bytes": 51573,
+      "sha256": "edd392a66487ff2d915139d9b3d49dac447601f23330cb7ae4f72f2cab09f67c"
+    },
+    {
+      "name": "incident-events.csv",
+      "format": "CSV (app timeline-export columns)",
+      "description": "Normalised full-incident timeline, UTC, chronological",
+      "importableInApp": false,
+      "bytes": 23730,
+      "sha256": "613d1461496e25995f8b102d5f2013e7dd5e9202a0c158588f67eea7e7ca8d96"
+    },
+    {
+      "name": "failed-logins.log",
+      "format": "syslog (RFC 3164)",
+      "description": "Repeated authentication failures / password spraying on lab-bastion01",
+      "importableInApp": true,
+      "bytes": 4086,
+      "sha256": "c6675d6f4212a716743a26ee7372c116df55a6e80521e5551ba6f17806bb7440"
+    },
+    {
+      "name": "suspicious-activity.log",
+      "format": "syslog (RFC 3164)",
+      "description": "Correlated post-compromise activity: sudo abuse, backdoor account, payload, persistence",
+      "importableInApp": true,
+      "bytes": 2395,
+      "sha256": "f4a4ebb0e8ba187ef2a8eb6a46c1233c407e81705d76d36e1f4b44d58e0fbfaa"
+    },
+    {
+      "name": "normal-activity.log",
+      "format": "syslog (RFC 3164)",
+      "description": "Ordinary baseline activity for comparison (expect no high/critical)",
+      "importableInApp": true,
+      "bytes": 2711,
+      "sha256": "cb9f51b2d5f933620b3aba8030aa1601f42ed0cce3d0dbea06da26835abfa473"
+    },
+    {
+      "name": "malformed-sample.log",
+      "format": "mixed / invalid",
+      "description": "2 valid lines and 10 invalid records for error-handling tests",
+      "importableInApp": true,
+      "bytes": 5522,
+      "sha256": "924cc88b755fef68409dc00ba66c22abe6fed1d7c468812d508bf21020489abf"
+    },
+    {
+      "name": "expected-test-results.json",
+      "format": "JSON",
+      "description": "Expected counts and correlation results generated with the project parser",
+      "importableInApp": false,
+      "bytes": 15582,
+      "sha256": "00bd54cae7540b34c8ed52b16207b867e3bacd1feae48edd1b7d95a63e6525b3"
+    },
+    {
+      "name": "README.md",
+      "format": "Markdown",
+      "description": "Scenario, import instructions and test cases",
+      "importableInApp": false,
+      "bytes": 3893,
+      "sha256": "dbfef5226c0a7a47b1f0cb54804d0ae8f3bbc3d087ed01165dadf1d9401bd35b"
+    }
+  ]
+}
