@@ -1,0 +1,26 @@
+# =====================================================================================
+# SYNTHETIC TEST DATA - nginx access log forwarded via syslog - web requests & URL probing (2026-10-28)
+# Generated for PS-013 Incident Timeline demos. NOT real security events.
+# Hosts (lab-*) are fictional; IPs are RFC 5737 documentation ranges
+# (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24). Syslog timestamps: import with year 2026.
+# =====================================================================================
+# Lines use the syslog-wrapped nginx format (access_log syslog:server=...), which the app imports as "Other" events.
+Oct 28 13:40:02 lab-web01 nginx: 192.0.2.50 - - [28/Oct/2026:13:40:02 +0000] "GET / HTTP/1.1" 200 5120 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) SyntheticBrowser/1.0"
+Oct 28 13:40:03 lab-web01 nginx: 192.0.2.50 - - [28/Oct/2026:13:40:03 +0000] "GET /static/app.css HTTP/1.1" 200 8812 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) SyntheticBrowser/1.0"
+Oct 28 13:41:17 lab-web01 nginx: 192.0.2.51 - - [28/Oct/2026:13:41:17 +0000] "GET /products?page=2 HTTP/1.1" 200 6400 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) SyntheticBrowser/1.0"
+Oct 28 13:44:09 lab-web01 nginx: 192.0.2.50 - - [28/Oct/2026:13:44:09 +0000] "POST /login HTTP/1.1" 302 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) SyntheticBrowser/1.0"
+Oct 28 13:58:02 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:13:58:02 +0000] "GET /wp-login.php HTTP/1.1" 404 162 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 13:58:03 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:13:58:03 +0000] "GET /.env HTTP/1.1" 404 162 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 13:58:03 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:13:58:03 +0000] "GET /.git/config HTTP/1.1" 404 162 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 13:58:04 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:13:58:04 +0000] "GET /phpmyadmin/ HTTP/1.1" 404 162 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 13:58:05 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:13:58:05 +0000] "GET /admin HTTP/1.1" 403 146 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 13:58:07 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:13:58:07 +0000] "GET /static/../../../../etc/passwd HTTP/1.1" 400 150 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 13:59:12 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:13:59:12 +0000] "GET /products?id=1'%20OR%20'1'='1 HTTP/1.1" 500 177 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 13:59:40 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:13:59:40 +0000] "GET /cgi-bin/luci;stok=/locale HTTP/1.1" 404 162 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 14:00:15 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:14:00:15 +0000] "POST /login HTTP/1.1" 401 98 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 14:00:18 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:14:00:18 +0000] "POST /login HTTP/1.1" 401 98 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 14:00:21 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:14:00:21 +0000] "POST /login HTTP/1.1" 401 98 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 14:00:24 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:14:00:24 +0000] "POST /login HTTP/1.1" 401 98 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 14:01:02 lab-web01 nginx: 203.0.113.45 - - [28/Oct/2026:14:01:02 +0000] "GET /server-status HTTP/1.1" 403 146 "-" "Mozilla/5.0 (compatible; synthetic-scanner/0.1)"
+Oct 28 14:03:30 lab-web01 nginx: 192.0.2.51 - - [28/Oct/2026:14:03:30 +0000] "GET /cart HTTP/1.1" 200 3300 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) SyntheticBrowser/1.0"
+Oct 28 14:13:06 lab-web01 nginx: 192.0.2.20 - - [28/Oct/2026:14:13:06 +0000] "GET /payload.sh HTTP/1.1" 404 162 "-" "Wget/1.21.4"

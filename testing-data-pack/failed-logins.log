@@ -1,0 +1,40 @@
+# =====================================================================================
+# SYNTHETIC TEST DATA - repeated authentication failures on lab-bastion01 (2026-10-28)
+# Generated for PS-013 Incident Timeline demos. NOT real security events.
+# Hosts (lab-*) are fictional; IPs are RFC 5737 documentation ranges
+# (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24). Syslog timestamps: import with year 2026.
+# =====================================================================================
+Oct 28 02:00:07 lab-bastion01 sshd[3100]: Failed password for root from 203.0.113.80 port 60100 ssh2
+Oct 28 02:00:26 lab-bastion01 sshd[3101]: Invalid user admin from 203.0.113.80 port 60107
+Oct 28 02:00:28 lab-bastion01 sshd[3101]: Failed password for invalid user admin from 203.0.113.80 port 60107 ssh2
+Oct 28 02:00:47 lab-bastion01 sshd[3102]: Invalid user oracle from 203.0.113.80 port 60114
+Oct 28 02:00:49 lab-bastion01 sshd[3102]: Failed password for invalid user oracle from 203.0.113.80 port 60114 ssh2
+Oct 28 02:01:08 lab-bastion01 sshd[3103]: Invalid user postgres from 203.0.113.80 port 60121
+Oct 28 02:01:10 lab-bastion01 sshd[3103]: Failed password for invalid user postgres from 203.0.113.80 port 60121 ssh2
+Oct 28 02:01:29 lab-bastion01 sshd[3104]: Invalid user ubuntu from 203.0.113.80 port 60128
+Oct 28 02:01:31 lab-bastion01 sshd[3104]: Failed password for invalid user ubuntu from 203.0.113.80 port 60128 ssh2
+Oct 28 02:01:50 lab-bastion01 sshd[3105]: Invalid user git from 203.0.113.80 port 60135
+Oct 28 02:01:52 lab-bastion01 sshd[3105]: Failed password for invalid user git from 203.0.113.80 port 60135 ssh2
+Oct 28 02:02:11 lab-bastion01 sshd[3106]: Invalid user test from 203.0.113.80 port 60142
+Oct 28 02:02:13 lab-bastion01 sshd[3106]: Failed password for invalid user test from 203.0.113.80 port 60142 ssh2
+Oct 28 02:02:34 lab-bastion01 sshd[3107]: Failed password for deploy from 203.0.113.80 port 60149 ssh2
+Oct 28 02:02:55 lab-bastion01 sshd[3108]: Failed password for root from 203.0.113.80 port 60156 ssh2
+Oct 28 02:03:14 lab-bastion01 sshd[3109]: Invalid user admin from 203.0.113.80 port 60163
+Oct 28 02:03:16 lab-bastion01 sshd[3109]: Failed password for invalid user admin from 203.0.113.80 port 60163 ssh2
+Oct 28 02:03:35 lab-bastion01 sshd[3110]: Invalid user oracle from 203.0.113.80 port 60170
+Oct 28 02:03:37 lab-bastion01 sshd[3110]: Failed password for invalid user oracle from 203.0.113.80 port 60170 ssh2
+Oct 28 02:03:56 lab-bastion01 sshd[3111]: Invalid user postgres from 203.0.113.80 port 60177
+Oct 28 02:03:58 lab-bastion01 sshd[3111]: Failed password for invalid user postgres from 203.0.113.80 port 60177 ssh2
+Oct 28 02:04:17 lab-bastion01 sshd[3112]: Invalid user ubuntu from 203.0.113.80 port 60184
+Oct 28 02:04:19 lab-bastion01 sshd[3112]: Failed password for invalid user ubuntu from 203.0.113.80 port 60184 ssh2
+Oct 28 02:04:38 lab-bastion01 sshd[3113]: Invalid user git from 203.0.113.80 port 60191
+Oct 28 02:04:40 lab-bastion01 sshd[3113]: Failed password for invalid user git from 203.0.113.80 port 60191 ssh2
+Oct 28 02:04:59 lab-bastion01 sshd[3114]: Invalid user test from 203.0.113.80 port 60198
+Oct 28 02:05:01 lab-bastion01 sshd[3114]: Failed password for invalid user test from 203.0.113.80 port 60198 ssh2
+Oct 28 02:05:22 lab-bastion01 sshd[3115]: Failed password for deploy from 203.0.113.80 port 60205 ssh2
+Oct 28 02:05:41 lab-bastion01 sshd[3130]: error: maximum authentication attempts exceeded for root from 203.0.113.80 port 60212 ssh2 [preauth]
+Oct 28 02:05:42 lab-bastion01 sshd[3131]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=203.0.113.80  user=root
+Oct 28 02:40:10 lab-bastion01 sshd[3200]: Failed password for deploy from 198.51.100.140 port 61000 ssh2
+Oct 28 03:05:44 lab-bastion01 sshd[3201]: Failed password for deploy from 198.51.100.140 port 61001 ssh2
+Oct 28 03:38:02 lab-bastion01 sshd[3202]: Failed password for deploy from 198.51.100.140 port 61002 ssh2
+Oct 28 03:50:12 lab-bastion01 sshd[3300]: Failed publickey for git from 192.0.2.30 port 61500 ssh2

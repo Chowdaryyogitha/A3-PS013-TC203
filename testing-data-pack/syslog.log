@@ -1,0 +1,23 @@
+# =====================================================================================
+# SYNTHETIC TEST DATA - system, firewall (UFW) and audit events - RFC 3339 timestamps (2026-10-28)
+# Generated for PS-013 Incident Timeline demos. NOT real security events.
+# Hosts (lab-*) are fictional; IPs are RFC 5737 documentation ranges
+# (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24). Syslog timestamps: import with year 2026.
+# =====================================================================================
+2026-10-28T13:50:00.120000+00:00 lab-web01 systemd[1]: Starting Daily apt download activities...
+2026-10-28T13:50:04.881000+00:00 lab-web01 systemd[1]: apt-daily.service: Deactivated successfully.
+2026-10-28T13:55:38+00:00 lab-web01 kernel: [95738.000] [UFW BLOCK] IN=eth0 OUT= SRC=198.51.100.77 DST=192.0.2.20 LEN=44 PROTO=TCP SPT=40990 DPT=23 SYN
+2026-10-28T13:55:39+00:00 lab-web01 kernel: [95739.000] [UFW BLOCK] IN=eth0 OUT= SRC=198.51.100.77 DST=192.0.2.20 LEN=44 PROTO=TCP SPT=40991 DPT=3306 SYN
+2026-10-28T13:55:39+00:00 lab-web01 kernel: [95739.000] [UFW BLOCK] IN=eth0 OUT= SRC=198.51.100.77 DST=192.0.2.20 LEN=44 PROTO=TCP SPT=40992 DPT=5432 SYN
+2026-10-28T13:55:40+00:00 lab-web01 kernel: [95740.000] [UFW BLOCK] IN=eth0 OUT= SRC=198.51.100.77 DST=192.0.2.20 LEN=44 PROTO=TCP SPT=40993 DPT=6379 SYN
+2026-10-28T14:02:10+00:00 lab-web01 kernel: [96130.000] [UFW BLOCK] IN=eth0 OUT= SRC=203.0.113.45 DST=192.0.2.20 LEN=44 PROTO=TCP SPT=52990 DPT=8080 SYN
+2026-10-28T14:11:05.402000+00:00 lab-web01 audit[2398]: USER_CMD pid=2398 uid=1004 auid=1004 ses=7 msg='cwd="/home/webadmin" cmd="cat /etc/shadow" exe="/usr/bin/sudo" terminal=pts/1 res=success'
+2026-10-28T14:12:10.660000+00:00 lab-web01 audit[2401]: ADD_USER pid=2401 uid=0 auid=1004 ses=7 msg='op=adding user id=1006 exe="/usr/sbin/useradd" res=success'
+2026-10-28T14:12:30.105000+00:00 lab-web01 audit[2405]: USER_MGMT pid=2405 uid=0 auid=1004 ses=7 msg='op=add-user-to-group grp="sudo" acct="svc-backup" exe="/usr/sbin/usermod" res=success'
+2026-10-28T14:13:05+00:00 lab-web01 kernel: [96785.000] [UFW AUDIT] IN= OUT=eth0 SRC=192.0.2.20 DST=198.51.100.23 LEN=44 PROTO=TCP SPT=46022 DPT=80 SYN
+2026-10-28T14:13:41.020000+00:00 lab-web01 crontab[2417]: (root) REPLACE (root)
+2026-10-28T14:13:41.020000+00:00 lab-web01 crontab[2417]: (root) BEGIN EDIT (root)
+2026-10-28T19:46:12+05:30 lab-web01 fail2ban.actions[812]: NOTICE [sshd] Ban 203.0.113.45
+2026-10-28T14:17:01.000000+00:00 lab-web01 CRON[2440]: (root) CMD (/tmp/.cache.sh >/dev/null 2>&1)
+2026-10-28T14:17:02+00:00 lab-web01 kernel: [97022.000] [UFW AUDIT] IN= OUT=eth0 SRC=192.0.2.20 DST=198.51.100.23 LEN=44 PROTO=TCP SPT=46090 DPT=4444 SYN
+2026-10-28T14:30:00.000000+00:00 lab-web01 systemd[1]: Started Session 9 of User svc-backup.
